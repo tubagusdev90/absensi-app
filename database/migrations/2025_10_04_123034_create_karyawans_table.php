@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nama_karyawan');
             $table->string('email')->unique();
-            $table->string('jabatan');
             $table->foreignId('team_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('position_id')->nullable()->constrained('positions')
+                  ->nullOnDelete();
+            
             $table->timestamps();
         });
     }

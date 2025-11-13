@@ -35,23 +35,14 @@ class KaryawanResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
-                Forms\Components\Select::make('jabatan')
-                    ->label('Jabatan')
-                    ->options([
-                        'Team Member'         => 'Team Member',
-                        'Group Leader'        => 'Group Leader',
-                        'Section Leader'      => 'Section Leader',
-                        'Supervisor'          => 'Supervisor',
-                        'Assistant Manager'   => 'Assistant Manager',
-                        'Team Manager'        => 'Team Manager',
-                        'Deputi Manager'      => 'Deputi Manager',
-                        'Departement Manager' => 'Departement Manager',
-                        'Presiden Director'   => 'Presiden Director',
-                    ])
-                    ->native(false)     // dropdown bergaya select2
-                    ->searchable()      // bisa ketik untuk cari
-                    ->preload()         // load opsi di awal
+                Forms\Components\Select::make('position_id')
+                    ->label('Jabatan / Posisi')
+                    ->relationship('position', 'position_name')
+                    ->native(false)
+                    ->searchable()
+                    ->preload()
                     ->required(),
+
 
                 Forms\Components\Select::make('departemen_selector')
                     ->label('Departemen')
@@ -81,10 +72,12 @@ class KaryawanResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nama_karyawan')->label('Nama Karyawan')->searchable(),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('jabatan')
+                Tables\Columns\TextColumn::make('position.position_name')
+                    ->label('Jabatan')
                     ->badge()
                     ->sortable()
                     ->toggleable(),
+
                 Tables\Columns\TextColumn::make('team.nama_team')->label('Team')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('departemen.nama_departemen')->label('Departemen'),
             ])
@@ -98,19 +91,10 @@ class KaryawanResource extends Resource
                             $query->whereHas('team', fn($q) => $q->where('departemen_id', $data['value']));
                         }
                     }),   
-                Tables\Filters\SelectFilter::make('jabatan')
+                Tables\Filters\SelectFilter::make('position_id')
                     ->label('Jabatan')
-                    ->options([
-                        'Team Member'         => 'Team Member',
-                        'Group Leader'        => 'Group Leader',
-                        'Section Leader'      => 'Section Leader',
-                        'Supervisor'          => 'Supervisor',
-                        'Assistant Manager'   => 'Assistant Manager',
-                        'Team Manager'        => 'Team Manager',
-                        'Deputi Manager'      => 'Deputi Manager',
-                        'Departement Manager' => 'Departement Manager',
-                        'Presiden Director'   => 'Presiden Director',
-                    ]),
+                    ->relationship('position', 'position_name'),
+
         
             ])
             ->actions([

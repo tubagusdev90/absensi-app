@@ -15,8 +15,8 @@ class Karyawan extends Model
     protected $fillable = [
         'nama_karyawan',
         'email',
-        'jabatan',
         'team_id',
+        'position_id',
     ];
 
     /**
@@ -40,4 +40,10 @@ class Karyawan extends Model
     {
         return $this->hasMany(Absensi::class);
     }
+
+    public function position()
+    {
+        return $this->belongsTo(\App\Models\Position::class, 'position_id');
+    }
+
 }
