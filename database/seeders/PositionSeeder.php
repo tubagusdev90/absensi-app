@@ -10,6 +10,7 @@ class PositionSeeder extends Seeder
     public function run()
     {
         $positions = [
+            ['key' => 'admin',              'position_name' => 'Admin'],
             ['key' => 'team_member',        'position_name' => 'Team Member'],
             ['key' => 'group_leader',       'position_name' => 'Group Leader'],
             ['key' => 'section_leader',     'position_name' => 'Section Leader'],
