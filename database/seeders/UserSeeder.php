@@ -20,14 +20,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('super'),
             'email_verified_at' => now(),
         ]);
-
-        // Membuat akun kedua
-        User::create([
-            'name' => 'Tubagus Mochamad Isnaeni',
-            'email' => 'tubagusdev@gmail.com',
-            'password' => Hash::make('admin'),
-            'email_verified_at' => now(),
-        ]);
     }
 }
 
