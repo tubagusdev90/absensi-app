@@ -12,29 +12,76 @@ class KaryawanSeeder extends Seeder
 {
     public function run()
     {
-        // Ambil semua posisi
-        $positions = Position::all();
+        
+        Karyawan::create([
+            'nama_karyawan' => "Tubagus Mochamad Isnaeni",
+            'email'         => "tubagus@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 3,
+        ]);
+        
+        Karyawan::create([
+            'nama_karyawan' => "Median Prasetya",
+            'email'         => "median@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 2,
+        ]);
 
-        if ($positions->count() == 0) {
-            $this->command->error("Positions table is empty, run PositionSeeder first.");
-            return;
-        }
+        Karyawan::create([
+            'nama_karyawan' => "Luthfy Aqil Muchtar",
+            'email'         => "luthfy@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 2,
+        ]);
 
-        // Contoh team_id untuk semua karyawan (ubah sesuai kebutuhan)
-        $teamId = 1;
+        Karyawan::create([
+            'nama_karyawan' => "Raka Prasetya Nugraha",
+            'email'         => "raka@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 2,
+        ]);
 
-        // Buat 20 karyawan
-        for ($i = 1; $i <= 20; $i++) {
+        Karyawan::create([
+            'nama_karyawan' => "Eko Purnomo Aji",
+            'email'         => "ekopass@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 2,
+        ]);
 
-            // ambil posisi secara acak
-            $position = $positions->random();
+        Karyawan::create([
+            'nama_karyawan' => "Raden Bambang Ergiansyah",
+            'email'         => "rbe@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 6,
+        ]);
 
-            Karyawan::create([
-                'nama_karyawan' => "Karyawan {$i}",
-                'email'         => "karyawan{$i}@example.com",
-                'team_id'       => $teamId,              // Ubah jika pakai banyak team
-                'position_id'   => $position->id,
-            ]);
-        }
+        Karyawan::create([
+            'nama_karyawan' => "Dennie Prasetyo",
+            'email'         => "dennie@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 4,
+        ]);
+
+        Karyawan::create([
+            'nama_karyawan' => "Park Jin Su",
+            'email'         => "pjs@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 5,
+        ]);
+
+        Karyawan::create([
+            'nama_karyawan' => "Kim Dong Soo",
+            'email'         => "kds@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 7,
+        ]);
+
+        Karyawan::create([
+            'nama_karyawan' => "Baek Seung Cheul",
+            'email'         => "bsc@posco.net",
+            'team_id'       => 3,              // Ubah jika pakai banyak team
+            'position_id'   => 8,
+        ]);
+        
     }
 }
